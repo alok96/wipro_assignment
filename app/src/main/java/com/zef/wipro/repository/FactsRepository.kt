@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import com.zef.wipro.constants.LoadingStatus
 import com.zef.wipro.request.response.Facts
 
+/**
+ * Facts Repository acts as a single source for Facts Data,
+ */
 interface FactsRepository {
     fun fetchData(forceRefresh: Boolean)
     val factsLiveData: LiveData<Facts>

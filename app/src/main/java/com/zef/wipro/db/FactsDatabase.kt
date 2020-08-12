@@ -1,7 +1,7 @@
 package com.zef.wipro.db
 
 /**
- * This class mimics the property of Database, exposing a dummy Page Data object which holds the cached value of page
+ * This class mimics the property of Database, exposing a facts Data object which holds the cached value of page
  */
 class FactsDatabase {
     val factsDao: FactsDao

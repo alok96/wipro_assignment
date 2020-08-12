@@ -14,7 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
- * Implementation of PageRepository, Also persist the page data locally
+ * Implementation of FactsRepository, Also persist the Facts data locally
  */
 class FactsRepositoryImpl private constructor(private val context: Context, private val factsAPIService: FactsAPI, private val factsDao: FactsDao) : FactsRepository,
     Callback<Facts?> {
@@ -42,7 +42,7 @@ class FactsRepositoryImpl private constructor(private val context: Context, priv
 
     private fun fetchRemoteData() {
         if (ConnectivityInfo.isOnline(context)) {
-            factsAPIService.factsData!!.enqueue(this)
+            factsAPIService.factsData?.enqueue(this)
         } else {
             dataLoadingStatus.setValue(LoadingStatus.OFFLINE)
         }
@@ -56,7 +56,7 @@ class FactsRepositoryImpl private constructor(private val context: Context, priv
     }
 
     override fun onResponse(call: Call<Facts?>, response: Response<Facts?>) {
-        // persist data to dummyPageDao this will also update the observer
+        // persist data to FactsDao this will also update the observer
         factsDao.setFacts(response.body()!!)
         dataLoadingStatus.value = LoadingStatus.FINISHED
     }
