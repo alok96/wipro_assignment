@@ -13,10 +13,15 @@ class FactsViewModel internal constructor(private val factsRepository: FactsRepo
     val factsLiveData: MutableLiveData<Facts>
         get() = factsRepository.factsLiveData as MutableLiveData<Facts>
 
+    private val _facts = MutableLiveData<List<Facts>>().apply { value = emptyList() }
+    val facts: LiveData<List<Facts>> = _facts
+
+    private val _isViewLoading = MutableLiveData<Boolean>()
+    val isViewLoading: LiveData<Boolean> = _isViewLoading
+
     fun fetchData() {
         factsRepository.fetchData(false)
     }
-
 
     val dataLoadingStatusLiveData: LiveData<LoadingStatus>
         get() = factsRepository.dataLoadingStatusLiveData

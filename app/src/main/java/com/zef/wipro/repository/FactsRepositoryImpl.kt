@@ -16,7 +16,11 @@ import retrofit2.Response
 /**
  * Implementation of FactsRepository, Also persist the Facts data locally
  */
-class FactsRepositoryImpl private constructor(private val context: Context, private val factsAPIService: FactsAPI, private val factsDao: FactsDao) : FactsRepository,
+class FactsRepositoryImpl private constructor(
+    private val context: Context,
+    private val factsAPIService: FactsAPI,
+    private val factsDao: FactsDao
+) : FactsRepository,
     Callback<Facts?> {
     private val dataLoadingStatus: MutableLiveData<LoadingStatus>
 
@@ -70,7 +74,11 @@ class FactsRepositoryImpl private constructor(private val context: Context, priv
         private var instance: FactsRepository? = null
 
         @Synchronized
-        fun getInstance(context: Context, apiService: FactsAPI, factsDao: FactsDao): FactsRepository? {
+        fun getInstance(
+            context: Context,
+            apiService: FactsAPI,
+            factsDao: FactsDao
+        ): FactsRepository? {
             if (instance == null) {
                 instance = FactsRepositoryImpl(context, apiService, factsDao)
             }
