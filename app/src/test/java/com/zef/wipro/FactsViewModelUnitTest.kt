@@ -18,7 +18,7 @@ import org.junit.Test
 import org.mockito.*
 import org.mockito.Mockito.*
 
-class FactsUnitTest {
+class FactsViewModelUnitTest {
     @Mock
     private lateinit var repository: FactsRepository
 
