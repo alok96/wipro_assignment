@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.zef.wipro.constants.LoadingStatus
+import com.zef.wipro.constants.OperationCallback
 import com.zef.wipro.db.FactsDao
 import com.zef.wipro.request.FactsAPI
 import com.zef.wipro.request.response.Facts
@@ -29,7 +30,7 @@ class FactsRepositoryImpl private constructor(
      *
      * @param forceRefresh force fetch data from remote if this is true
      */
-    override fun fetchData(forceRefresh: Boolean) {
+    override fun fetchData(callback: OperationCallback<Facts>, forceRefresh: Boolean) {
         dataLoadingStatus.value = LoadingStatus.LOADING
         if (forceRefresh || factsDao.facts.value == null) { // fetch data from remote
             fetchRemoteData()

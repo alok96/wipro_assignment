@@ -76,5 +76,4 @@ package com.zef.wipro.data
 ]
 } */
 
-data class Rows(val title: String, val description: String, val imageHref: String) {
-}
+data class Rows(val title: String, val description: String, val imageHref: String)
